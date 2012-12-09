@@ -76,6 +76,16 @@ get '/report/:playerid/:time' => sub {
 	return send_file( "$tempdir/" . setting 'projectReport');
 };
 
+get '/report/*/**' => sub {
+	my ($playerid,$file) = splat();
+	my @file = @{$file};
+	my $concfile;
+	for my $filebit (@file) {
+	$concfile .= "/" . $filebit;
+	}
+	return send_file($concfile);
+};
+
 
 sub runTjp {
 	my %passeddata = @_;
