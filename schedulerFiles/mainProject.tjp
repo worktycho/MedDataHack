@@ -1,0 +1,256 @@
+/*
+ * This file contains an example project. It is part of the
+ * TaskJuggler project management tool. It uses a made up software
+ * development project to demonstrate some of the basic features of
+ * TaskJuggler. Please see the TaskJuggler manual for a more detailed
+ * description of the various syntax elements.
+ */
+project acso "Poly P1" 2012-12-08 +1h {
+  timingresolution 5min  
+  timezone "Europe/London"    
+  timeformat "%Y-%m-%d %H:%M"
+#  now 2012-12-08-22:00:00
+  workinghours mon - sun 00:00 - 23:59
+}
+
+macro allocate_SeniorAE [
+  allocate SAE1
+  allocate SAE2
+  allocate SAE3
+  allocate SAE4
+  allocate SAE5
+  allocate SAE6
+]
+
+macro allocate_JuniorAE [
+  allocate SAE1
+  allocate SAE2
+  allocate SAE3
+  allocate SAE4
+  allocate SAE5
+  allocate SAE6
+]
+
+macro SenoirAE [
+  resource ${1} "SAE" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorAE [
+  resource ${1} "JAE" {	
+    efficiency 0.7
+  }
+]
+
+
+${SenoirAE "SAE1"}
+${SenoirAE "SAE2"}
+${SenoirAE "SAE3"}
+${SenoirAE "SAE4"}
+${SenoirAE "SAE5"}
+${SenoirAE "SAE6"}
+
+
+${JuniorAE "JAE1"}
+${JuniorAE "JAE2"}
+${JuniorAE "JAE3"}
+${JuniorAE "JAE4"}
+${JuniorAE "JAE5"}
+${JuniorAE "JAE6"}
+
+
+macro allocate_SeniorAnaes [
+  allocate SAnaes1
+  allocate SAnaes2
+  allocate SAnaes3
+  allocate SAnaes4
+  allocate SAnaes5
+  allocate SAnaes6
+]
+
+macro allocate_JuniorAnaes [
+  allocate JAnaes1
+  allocate JAnaes2
+  allocate JAnaes3
+  allocate JAnaes4
+  allocate JAnaes5
+  allocate JAnaes6
+]
+
+macro SeniorAnaes [
+  resource ${1} "SAnaes" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorAnaes [
+  resource ${1} "JAnaes" {	
+    efficiency 0.7
+  }
+]
+
+
+${SeniorAnaes "SAnaes1"}
+${SeniorAnaes "SAnaes2"}
+${SeniorAnaes "SAnaes3"}
+${SeniorAnaes "SAnaes4"}
+${SeniorAnaes "SAnaes5"}
+${SeniorAnaes "SAnaes6"}
+
+${JuniorAnaes "JAnaes1"}
+${JuniorAnaes "JAnaes2"}
+${JuniorAnaes "JAnaes3"}
+${JuniorAnaes "JAnaes4"}
+${JuniorAnaes "JAnaes5"}
+${JuniorAnaes "JAnaes6"}
+
+
+macro allocate_SeniorNE[
+  allocate SNE1
+  allocate SNE2
+  allocate SNE3
+  allocate SNE4
+  allocate SNE5
+  allocate SNE6
+]
+
+macro allocate_JuniorNE[
+  allocate JNE1
+  allocate JNE2
+  allocate JNE3
+  allocate JNE4
+  allocate JNE5
+  allocate JNE6
+]
+
+macro SeniorNR [
+  resource ${1} "SNR" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorNR [
+  resource ${1} "JNR" {	
+    efficiency 0.7
+  }
+]
+
+
+${SeniorNR "SNR1"}
+${SeniorNR "SNR2"}
+${SeniorNR "SNR3"}
+${SeniorNR "SNR4"}
+${SeniorNR "SNR5"}
+${SeniorNR "SNR6"}
+
+${JuniorNR "JNR1"}
+${JuniorNR "JNR2"}
+${JuniorNR "JNR3"}
+${JuniorNR "JNR4"}
+${JuniorNR "JNR5"}
+${JuniorNR "JNR6"}
+
+
+macro allocate_SeniorSR[
+  allocate SSR1
+  allocate SSR2
+  allocate SSR3
+  allocate SSR4
+  allocate SSR5
+  allocate SSR6
+]
+
+
+macro allocate_JuniorSR[
+  allocate JSR1
+  allocate JSR2
+  allocate JSR3
+  allocate JSR4
+  allocate JSR5
+  allocate JSR6
+]
+
+macro SeniorSSR [
+  resource ${1} "SSR" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorJSR [
+  resource ${1} "JSR" {	
+    efficiency 0.7
+  }
+]
+
+
+${SeniorSSR "SSR1"}
+${SeniorSSR "SSR2"}
+${SeniorSSR "SSR3"}
+${SeniorSSR "SSR4"}
+
+${JuniorJSR "JSR1"}
+${JuniorJSR "JSR2"}
+${JuniorJSR "JSR3"}
+${JuniorJSR "JSR4"}
+
+
+macro AEBeds [
+  resource ${1} "Aebeds" {	
+    efficiency 0
+  }
+]
+
+${AEBeds "AEBed1"}
+${AEBeds "AEBed2"}
+${AEBeds "AEBed3"}
+${AEBeds "AEBed4"}
+${AEBeds "AEBed5"}
+${AEBeds "AEBed6"}
+
+
+resource boss "Player1" {
+}
+
+
+task AcSo "Patient Admission" {
+
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+
+  task spec "Specification" {
+    effort 5min
+    ${allocate_SeniorAE}
+  }
+}
+
+
+task patient1 "PolyP1" {
+
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task ae "Specification" {
+    effort 5min
+    ${allocate_SeniorAE}
+  }
+}
+
+
+
+
+# Export only bookings for 1st week as resource supplements
+export "WeekBookings" {
+#  definitions -
+  taskattributes booking
+  hideresource 0
+}
+
+# Export the scheduled project as Microsoft Project XML format.
+export "MS-Project" {
+  formats mspxml
+  loadunit quarters
+}
+
+
