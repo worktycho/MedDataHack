@@ -1,0 +1,464 @@
+/*
+ * This file contains an example project. It is part of the
+ * TaskJuggler project management tool. It uses a made up software
+ * development project to demonstrate some of the basic features of
+ * TaskJuggler. Please see the TaskJuggler manual for a more detailed
+ * description of the various syntax elements.
+ */
+project acso "Poly P1" 2012-12-09-15:00:00 +10h {
+  timingresolution 5min
+  timezone "Europe/London"
+  timeformat "%Y-%m-%d %H:%M"
+#  now 2012-12-08-22:00:00
+  workinghours mon - sun 00:00 - 23:59
+}
+
+macro SenoirAE [
+  resource ${1} "SAE" {
+    efficiency 1.0
+  }
+]
+
+macro JuniorAE [
+  resource ${1} "JAE" {
+    efficiency 0.7
+  }
+]
+
+macro SeniorAnaes [
+  resource ${1} "SAnaes" {
+    efficiency 1.0
+  }
+]
+
+macro JuniorAnaes [
+  resource ${1} "JAnaes" {
+    efficiency 0.7
+  }
+]
+
+macro SeniorNR [
+  resource ${1} "SNR" {
+    efficiency 1.0
+  }
+]
+
+macro JuniorNR [
+  resource ${1} "JNR" {
+    efficiency 0.7
+  }
+]
+
+macro SeniorSSR [
+  resource ${1} "SSR" {
+    efficiency 1.0
+  }
+]
+
+macro JuniorJSR [
+  resource ${1} "JSR" {
+    efficiency 0.7
+  }
+]
+
+
+macro AEBeds [
+  resource ${1} "Aebeds" {
+    efficiency 0
+  }
+]
+
+######   Resource creation
+
+resource boss "Player1" {
+}
+
+${SeniorNR "SNR1"}
+${SeniorNR "SNR2"}
+${SeniorNR "SNR3"}
+${SeniorNR "SNR4"}
+${SeniorNR "SNR5"}
+${SeniorNR "SNR6"}
+
+${JuniorNR "JNR1"}
+${JuniorNR "JNR2"}
+${JuniorNR "JNR3"}
+${JuniorNR "JNR4"}
+${JuniorNR "JNR5"}
+${JuniorNR "JNR6"}
+
+
+${SeniorAnaes "SAnaes1"}
+${SeniorAnaes "SAnaes2"}
+${SeniorAnaes "SAnaes3"}
+${SeniorAnaes "SAnaes4"}
+${SeniorAnaes "SAnaes5"}
+${SeniorAnaes "SAnaes6"}
+
+${JuniorAnaes "JAnaes1"}
+${JuniorAnaes "JAnaes2"}
+${JuniorAnaes "JAnaes3"}
+${JuniorAnaes "JAnaes4"}
+${JuniorAnaes "JAnaes5"}
+${JuniorAnaes "JAnaes6"}
+
+
+${SenoirAE "SAE1"}
+${SenoirAE "SAE2"}
+${SenoirAE "SAE3"}
+${SenoirAE "SAE4"}
+${SenoirAE "SAE5"}
+${SenoirAE "SAE6"}
+
+
+${JuniorAE "JAE1"}
+${JuniorAE "JAE2"}
+${JuniorAE "JAE3"}
+${JuniorAE "JAE4"}
+${JuniorAE "JAE5"}
+${JuniorAE "JAE6"}
+
+
+${SeniorSSR "SSR1"}
+${SeniorSSR "SSR2"}
+${SeniorSSR "SSR3"}
+${SeniorSSR "SSR4"}
+
+${JuniorJSR "JSR1"}
+${JuniorJSR "JSR2"}
+${JuniorJSR "JSR3"}
+${JuniorJSR "JSR4"}
+
+
+${AEBeds "AEBed1"}
+${AEBeds "AEBed2"}
+${AEBeds "AEBed3"}
+${AEBeds "AEBed4"}
+${AEBeds "AEBed5"}
+${AEBeds "AEBed6"}
+
+
+
+
+############# Allocation macros
+
+macro allocate_SeniorAE [
+  allocate SAE1
+  allocate SAE2
+  allocate SAE3
+  allocate SAE4
+  allocate SAE5
+  allocate SAE6
+]
+
+macro allocate_JuniorAE [
+  allocate SAE1
+  allocate SAE2
+  allocate SAE3
+  allocate SAE4
+  allocate SAE5
+  allocate SAE6
+]
+
+macro allocate_Anaes [
+  allocate SAnaes1
+  allocate SAnaes2
+  allocate SAnaes3
+  allocate SAnaes4
+  allocate SAnaes5
+  allocate SAnaes6
+  allocate JAnaes1
+  allocate JAnaes2
+  allocate JAnaes3
+  allocate JAnaes4
+  allocate JAnaes5
+  allocate JAnaes6
+]
+
+macro allocate_SeniorSR[
+  allocate SSR1
+  allocate SSR2
+  allocate SSR3
+  allocate SSR4
+  allocate SSR5
+  allocate SSR6
+]
+
+
+macro allocate_JuniorSR[
+  allocate JSR1
+  allocate JSR2
+  allocate JSR3
+  allocate JSR4
+  allocate JSR5
+  allocate JSR6
+]
+
+macro allocate_SeniorNE[
+  allocate SNE1
+  allocate SNE2
+  allocate SNE3
+  allocate SNE4
+  allocate SNE5
+  allocate SNE6
+]
+
+macro allocate_JuniorNE[
+  allocate JNE1
+  allocate JNE2
+  allocate JNE3
+  allocate JNE4
+  allocate JNE5
+  allocate JNE6
+]
+
+macro allocate_resusATeam[
+  ${allocate_SeniorAE}
+  ${allocate_Anaes}
+
+]
+
+###### Task creation
+
+task pat1 "Patient 1" {
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task resus "Resus Process" {
+    effort 2h
+    allocate SAE1
+    allocate SAnaes1
+    allocate SNR1
+  }
+}
+
+task pat2 "Patient 2" {
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task resus "Resus Process" {
+    effort 2h
+    allocate SAE2
+    allocate SAnaes2
+    allocate SNR2
+  }
+}
+
+task pat3 "Patient 3" {
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task resus "Resus Process" {
+    effort 2h
+    allocate SAE3
+    allocate SAnaes3
+    allocate SNR3
+  }
+}
+
+task pat4 "Patient 4" {
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task resus "Resus Process" {
+    effort 2h
+    allocate SAE4
+    allocate SAnaes4
+    allocate SNR4
+  }
+}
+
+task pat5 "Patient 5" {
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task resus "Resus Process" {
+    effort 2h
+    allocate SAE5
+    allocate SAnaes5
+    allocate SNR5
+  }
+}
+
+task pat6 "Patient 6" {
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task resus "Resus Process" {
+    effort 2h
+    allocate SAE6
+    allocate SAnaes6
+    allocate SNR6
+  }
+}
+
+task pat7 "Patient 7" {
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task resus "Resus Process" {
+    effort 2h
+    allocate SAE1
+    allocate SAnaes1
+    allocate SNR1
+  }
+}
+
+
+
+# Export only bookings for 1st week as resource supplements
+export "WeekBookings" {
+#  definitions -
+  taskattributes booking
+  hideresource 0
+}
+
+# Export the scheduled project as Microsoft Project XML format.
+export "MS-Project" {
+  formats mspxml
+  loadunit quarters
+}
+
+########################
+## Report
+
+
+# Now the project has been specified completely. Stopping here would
+# result in a valid TaskJuggler file that could be processed and
+# scheduled. But no reports would be generated to visualize the
+# results.
+
+navigator navbar {
+  hidereport 0
+}
+
+macro TaskTip [
+  tooltip istask() -8<-
+    '''Start: ''' <-query attribute='start'->
+    '''End: ''' <-query attribute='end'->
+    ----
+    '''Resources:'''
+
+    <-query attribute='resources'->
+    ----
+    '''Precursors: '''
+
+    <-query attribute='precursors'->
+    ----
+    '''Followers: '''
+
+    <-query attribute='followers'->
+    ->8-
+]
+
+textreport frame "" {
+  header -8<-
+    == TaskJuggler Project Template ==
+    <[navigator id="navbar"]>
+  ->8-
+  footer "----"
+  textreport index "Overview" {
+    formats html
+    center '<[report id="overview"]>'
+  }
+
+  textreport "Status" {
+    formats html
+    center -8<-
+      <[report id="status.dashboard"]>
+      ----
+      <[report id="status.completed"]>
+      ----
+      <[report id="status.ongoing"]>
+    ->8-
+  }
+
+  textreport "ResourceGraph" {
+    formats html
+    title "Resource Graph"
+    center '<[report id="resourceGraph"]>'
+  }
+}
+
+# A traditional Gantt chart with a project overview.
+taskreport overview "" {
+  header -8<-
+    === Hospital Overview ===
+ ->8-
+  columns bsi { title 'WBS' },
+          name, start, end, effort, chart { ${TaskTip} }
+  # For this report we like to have the abbreviated weekday in front
+  # of the date. %a is the tag for this.
+  timeformat "%a %Y-%m-%d"
+  loadunit hours
+  hideresource 1
+}
+
+# Macro to set the background color of a cell according to the alert
+# level of the task.
+macro AlertColor [
+  cellcolor plan.alert = 0 "#00D000" # green
+  cellcolor plan.alert = 1 "#D0D000" # yellow
+  cellcolor plan.alert = 2 "#D00000" # red
+]
+
+taskreport status "" {
+  columns bsi { width 50 title 'WBS' }, name { width 150 },
+          start { width 100 }, end { width 100 },
+          effort { width 100 },
+          alert { tooltip plan.journal
+                          != '' "<-query attribute='journal'->" width 150 },
+          status { width 150 }
+
+  taskreport dashboard "" {
+    headline "Project Dashboard (<-query attribute='now'->)"
+    columns name { title "Task" ${AlertColor} width 200},
+            resources { width 200 ${AlertColor}
+                        listtype bullets
+                        listitem "<-query attribute='name'->"
+                        start ${projectstart} end ${projectend} },
+            alerttrend { title "Trend" ${AlertColor} width 50 },
+            journal { width 350 ${AlertColor} }
+    journalmode status_up
+    journalattributes headline, author, date, summary, details
+    hidetask ~hasalert(0)
+    sorttasks alert.down, plan.end.up
+    period %{${now} - 1w} +1w
+  }
+  taskreport completed "" {
+    headline "Already completed tasks"
+    hidetask ~(plan.end <= ${now})
+  }
+  taskreport ongoing "" {
+    headline "Ongoing tasks"
+    hidetask ~((plan.start <= ${now}) & (plan.end > ${now}))
+  }
+  taskreport future "" {
+    headline "Future tasks"
+    hidetask ~(plan.start > ${now})
+  }
+}
+
+# A list of tasks showing the resources assigned to each task.
+taskreport patient "" {
+  headline "Patient 1 - Resource Allocation Report"
+  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
+          duration, chart { ${TaskTip} scale day width 500 }
+  timeformat "%Y-%m-%d"
+  hideresource ~(isleaf() & isleaf_())
+  sortresources name.up
+  taskroot pat1
+}
+
+
+# A graph showing resource allocation. It identifies whether each
+# resource is under- or over-allocated for.
+resourcereport resourceGraph "" {
+  headline "Resource Allocation Graph"
+  columns no, name, effort, hourly { ${TaskTip} }
+  loadunit shortauto
+  # We only like to show leaf tasks for leaf resources.
+  hidetask ~(isleaf() & isleaf_())
+  sorttasks plan.start.up
+}
+
