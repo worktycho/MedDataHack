@@ -1,474 +1,256 @@
-project acso "Poly P1" "1.0" 2012-12-08-00:00-+0000 - 2012-12-08-01:00-+0000 {
-  timingresolution 5min
-  timezone "Europe/London"
-  scenario plan "Plan Scenario" {
-    active yes
-  }
+/*
+ * This file contains an example project. It is part of the
+ * TaskJuggler project management tool. It uses a made up software
+ * development project to demonstrate some of the basic features of
+ * TaskJuggler. Please see the TaskJuggler manual for a more detailed
+ * description of the various syntax elements.
+ */
+project acso "Poly P1" 2012-12-08 +1h {
+  timingresolution 5min  
+  timezone "Europe/London"    
+  timeformat "%Y-%m-%d %H:%M"
+#  now 2012-12-08-22:00:00
+  workinghours mon - sun 00:00 - 23:59
 }
 
-projectids acso
+macro allocate_SeniorAE [
+  allocate SAE1
+  allocate SAE2
+  allocate SAE3
+  allocate SAE4
+  allocate SAE5
+  allocate SAE6
+]
 
-resource SAE1 "SAE"
-resource SAE2 "SAE"
-resource SAE3 "SAE"
-resource SAE4 "SAE"
-resource SAE5 "SAE"
-resource SAE6 "SAE"
-resource JAE1 "JAE"
-resource JAE2 "JAE"
-resource JAE3 "JAE"
-resource JAE4 "JAE"
-resource JAE5 "JAE"
-resource JAE6 "JAE"
-resource SAnaes1 "SAnaes"
-resource SAnaes2 "SAnaes"
-resource SAnaes3 "SAnaes"
-resource SAnaes4 "SAnaes"
-resource SAnaes5 "SAnaes"
-resource SAnaes6 "SAnaes"
-resource JAnaes1 "JAnaes"
-resource JAnaes2 "JAnaes"
-resource JAnaes3 "JAnaes"
-resource JAnaes4 "JAnaes"
-resource JAnaes5 "JAnaes"
-resource JAnaes6 "JAnaes"
-resource SNR1 "SNR"
-resource SNR2 "SNR"
-resource SNR3 "SNR"
-resource SNR4 "SNR"
-resource SNR5 "SNR"
-resource SNR6 "SNR"
-resource JNR1 "JNR"
-resource JNR2 "JNR"
-resource JNR3 "JNR"
-resource JNR4 "JNR"
-resource JNR5 "JNR"
-resource JNR6 "JNR"
-resource SSR1 "SSR"
-resource SSR2 "SSR"
-resource SSR3 "SSR"
-resource SSR4 "SSR"
-resource JSR1 "JSR"
-resource JSR2 "JSR"
-resource JSR3 "JSR"
-resource JSR4 "JSR"
-resource boss "Player1"
+macro allocate_JuniorAE [
+  allocate SAE1
+  allocate SAE2
+  allocate SAE3
+  allocate SAE4
+  allocate SAE5
+  allocate SAE6
+]
+
+macro SenoirAE [
+  resource ${1} "SAE" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorAE [
+  resource ${1} "JAE" {	
+    efficiency 0.7
+  }
+]
+
+
+${SenoirAE "SAE1"}
+${SenoirAE "SAE2"}
+${SenoirAE "SAE3"}
+${SenoirAE "SAE4"}
+${SenoirAE "SAE5"}
+${SenoirAE "SAE6"}
+
+
+${JuniorAE "JAE1"}
+${JuniorAE "JAE2"}
+${JuniorAE "JAE3"}
+${JuniorAE "JAE4"}
+${JuniorAE "JAE5"}
+${JuniorAE "JAE6"}
+
+
+macro allocate_SeniorAnaes [
+  allocate SAnaes1
+  allocate SAnaes2
+  allocate SAnaes3
+  allocate SAnaes4
+  allocate SAnaes5
+  allocate SAnaes6
+]
+
+macro allocate_JuniorAnaes [
+  allocate JAnaes1
+  allocate JAnaes2
+  allocate JAnaes3
+  allocate JAnaes4
+  allocate JAnaes5
+  allocate JAnaes6
+]
+
+macro SeniorAnaes [
+  resource ${1} "SAnaes" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorAnaes [
+  resource ${1} "JAnaes" {	
+    efficiency 0.7
+  }
+]
+
+
+${SeniorAnaes "SAnaes1"}
+${SeniorAnaes "SAnaes2"}
+${SeniorAnaes "SAnaes3"}
+${SeniorAnaes "SAnaes4"}
+${SeniorAnaes "SAnaes5"}
+${SeniorAnaes "SAnaes6"}
+
+${JuniorAnaes "JAnaes1"}
+${JuniorAnaes "JAnaes2"}
+${JuniorAnaes "JAnaes3"}
+${JuniorAnaes "JAnaes4"}
+${JuniorAnaes "JAnaes5"}
+${JuniorAnaes "JAnaes6"}
+
+
+macro allocate_SeniorNE[
+  allocate SNE1
+  allocate SNE2
+  allocate SNE3
+  allocate SNE4
+  allocate SNE5
+  allocate SNE6
+]
+
+macro allocate_JuniorNE[
+  allocate JNE1
+  allocate JNE2
+  allocate JNE3
+  allocate JNE4
+  allocate JNE5
+  allocate JNE6
+]
+
+macro SeniorNR [
+  resource ${1} "SNR" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorNR [
+  resource ${1} "JNR" {	
+    efficiency 0.7
+  }
+]
+
+
+${SeniorNR "SNR1"}
+${SeniorNR "SNR2"}
+${SeniorNR "SNR3"}
+${SeniorNR "SNR4"}
+${SeniorNR "SNR5"}
+${SeniorNR "SNR6"}
+
+${JuniorNR "JNR1"}
+${JuniorNR "JNR2"}
+${JuniorNR "JNR3"}
+${JuniorNR "JNR4"}
+${JuniorNR "JNR5"}
+${JuniorNR "JNR6"}
+
+
+macro allocate_SeniorSR[
+  allocate SSR1
+  allocate SSR2
+  allocate SSR3
+  allocate SSR4
+  allocate SSR5
+  allocate SSR6
+]
+
+
+macro allocate_JuniorSR[
+  allocate JSR1
+  allocate JSR2
+  allocate JSR3
+  allocate JSR4
+  allocate JSR5
+  allocate JSR6
+]
+
+macro SeniorSSR [
+  resource ${1} "SSR" {	
+    efficiency 1.0
+  }
+]
+
+macro JuniorJSR [
+  resource ${1} "JSR" {	
+    efficiency 0.7
+  }
+]
+
+
+${SeniorSSR "SSR1"}
+${SeniorSSR "SSR2"}
+${SeniorSSR "SSR3"}
+${SeniorSSR "SSR4"}
+
+${JuniorJSR "JSR1"}
+${JuniorJSR "JSR2"}
+${JuniorJSR "JSR3"}
+${JuniorJSR "JSR4"}
+
+
+macro AEBeds [
+  resource ${1} "Aebeds" {	
+    efficiency 0
+  }
+]
+
+${AEBeds "AEBed1"}
+${AEBeds "AEBed2"}
+${AEBeds "AEBed3"}
+${AEBeds "AEBed4"}
+${AEBeds "AEBed5"}
+${AEBeds "AEBed6"}
+
+
+resource boss "Player1" {
+}
+
 
 task AcSo "Patient Admission" {
+
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+
   task spec "Specification" {
-    start 2012-12-08-00:00-+0000
-    end 2012-12-08-00:05-+0000
-    scheduling asap
-    scheduled
+    effort 5min
+    ${allocate_SeniorAE}
   }
 }
-supplement task AcSo {
+
+
+task patient1 "PolyP1" {
+
+  # For the duration of the project we have running cost that are not
+  # included in the labor cost.
+  responsible boss
+  task ae "Specification" {
+    effort 5min
+    ${allocate_SeniorAE}
+  }
 }
-supplement task AcSo.spec {
-  booking SAE1 2012-12-08-00:00-+0000 + 0.0833333333333333h { overtime 2 }
+
+
+
+
+# Export only bookings for 1st week as resource supplements
+export "WeekBookings" {
+#  definitions -
+  taskattributes booking
+  hideresource 0
 }
-supplement resource SAE1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
+
+# Export the scheduled project as Microsoft Project XML format.
+export "MS-Project" {
+  formats mspxml
+  loadunit quarters
 }
-supplement resource SAE2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAE3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAE4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAE5 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAE6 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAE1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAE2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAE3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAE4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAE5 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAE6 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAnaes1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAnaes2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAnaes3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAnaes4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAnaes5 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SAnaes6 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAnaes1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAnaes2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAnaes3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAnaes4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAnaes5 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JAnaes6 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SNR1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SNR2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SNR3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SNR4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SNR5 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SNR6 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JNR1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JNR2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JNR3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JNR4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JNR5 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JNR6 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SSR1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SSR2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SSR3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource SSR4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JSR1 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JSR2 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JSR3 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource JSR4 {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
-supplement resource boss {
-  workinghours sun 0:00 - 23:3540
-               workinghours mon 0:00 - 23:3540
-               workinghours tue 0:00 - 23:3540
-               workinghours wed 0:00 - 23:3540
-               workinghours thu 0:00 - 23:3540
-               workinghours fri 0:00 - 23:3540
-               workinghours sat 0:00 - 23:3540
-}
+
+
