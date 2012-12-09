@@ -79,12 +79,12 @@ task patient1 "PolyP1" {
 supplement task AcSo {
 }
 supplement task AcSo.spec {
-  booking SAE1 2012-12-08-00:00-+0000 + 0.0833333333333333h { overtime 2 }
+  booking SAE1 2012-12-08-00:00-+0000 + 0.08333333333333333h { overtime 2 }
 }
 supplement task patient1 {
 }
 supplement task patient1.ae {
-  booking SAE2 2012-12-08-00:00-+0000 + 0.0833333333333333h { overtime 2 }
+  booking SAE2 2012-12-08-00:00-+0000 + 0.08333333333333333h { overtime 2 }
 }
 supplement resource SAE1 {
   workinghours sun 0:00 - 23:3540

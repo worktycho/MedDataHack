@@ -5,9 +5,6 @@
 # Your application's name
 appname: "API"
 
-# The default layout to use for your application (located in
-# views/layouts/main.tt)
-layout: "main"
 
 # when the charset is set to UTF-8 Dancer will handle for you
 # all the magic of encoding and decoding. You should not care
